@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Premium Weather App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="weather-container">
+
+    <h1>🌦 Weather Dashboard</h1>
+
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter City Name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if weather %}
+    <div class="weather-card">
+       <div class="footer">
+    Real-Time Weather Information
+</div>
+        <h2 class="city-name">📍 {{ weather.city|title }}</h2>
+
+        <div class="weather-info">
+            <div class="info-box">
+                <h3>🌡</h3>
+                <p>{{ weather.temp }} °C</p>
+                <span>Temperature</span>
+            </div>
+
+            <div class="info-box">
+                <h3>💧</h3>
+                <p>{{ weather.humidity }} %</p>
+                <span>Humidity</span>
+            </div>
+
+            <div class="info-box">
+                <h3>☁</h3>
+                <p>{{ weather.description }}</p>
+                <span>Condition</span>
+            </div>
+        </div>
+
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
